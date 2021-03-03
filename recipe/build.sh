@@ -1,6 +1,6 @@
 #! /bin/bash
 
-./bootstrap
+#./bootstrap
 #export CXXFLAGS=$(echo "$CXXFLAGS" | sed 's/-O2//' | perl -pe 's/-std=.+ /-std=c++98 /')
 #echo "CXXFLAGS $CXXFLAGS"
 
