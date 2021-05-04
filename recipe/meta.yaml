@@ -14,7 +14,7 @@ source:
   #url: https://bitbucket.org/psrsoft/{{ name }}/get/b054862c0788.tar.gz
         
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
