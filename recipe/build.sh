@@ -5,6 +5,7 @@
 #echo "CXXFLAGS $CXXFLAGS"
 
 export TEMPO2=$PREFIX/share/tempo2
+./bootstrap
 ./configure --prefix=$PREFIX --disable-local --disable-psrhome PGPLOT_DIR=$PREFIX/include/pgplot
 make -j${CPU_COUNT}
 make install

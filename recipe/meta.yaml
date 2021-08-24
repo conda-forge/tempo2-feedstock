@@ -1,5 +1,5 @@
 {% set name = "tempo2" %}
-{% set version = "2020.11.1" %}
+{% set version = "2021.07.1" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,14 +7,15 @@ package:
 
 source:
   # eg, https://bitbucket.org/psrsoft/tempo2/downloads/tempo2-2020.11.1.tar.gz
-  url: "https://bitbucket.org/psrsoft/{{ name }}/downloads/{{ name }}-{{ version }}.tar.gz"
-  sha256: 4351703c7c347f0e238d859d77350e5d07826669257a550873f7386942ae5ba3
+  #url: "https://bitbucket.org/psrsoft/{{ name }}/downloads/{{ name }}-{{ version }}.tar.gz"
+  url: https://bitbucket.org/psrsoft/{{ name }}/get/{{ version }}.tar.gz
+  sha256: ab1212d165ac5811d0f6869b0b85bc742164ee4edf2c431b21dafc8ed9c49a60
   # example of how to get untagged git hash version
   ## This is v2020.07.1 but not tagged
   #url: https://bitbucket.org/psrsoft/{{ name }}/get/b054862c0788.tar.gz
         
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
 
 requirements:
