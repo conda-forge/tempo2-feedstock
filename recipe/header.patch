@@ -5,7 +5,7 @@ index 5eb9704..927c61b 100644
 @@ -50,8 +50,8 @@
  
  
- #define TEMPO2_h_HASH "$Id$"
+ #define TEMPO2_h_HASH "$Id: 927c61b8f061f156972b68eabaea602f99d75105 $"
 -#define TEMPO2_h_VER "2021.06.1"
 -#define TEMPO2_h_MAJOR_VER 2021.06
 +#define TEMPO2_h_VER "2021.07.1"
