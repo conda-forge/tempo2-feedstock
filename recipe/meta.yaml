@@ -13,9 +13,12 @@ source:
   # example of how to get untagged git hash version
   ## This is v2020.07.1 but not tagged
   #url: https://bitbucket.org/psrsoft/{{ name }}/get/b054862c0788.tar.gz
-        
+  patches:
+    - configure.patch
+    - header.patch
+
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
