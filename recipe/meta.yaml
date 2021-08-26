@@ -6,19 +6,16 @@ package:
   version: "{{ version }}"
 
 source:
-  # eg, https://bitbucket.org/psrsoft/tempo2/downloads/tempo2-2020.11.1.tar.gz
+  # for "Download" versions use:
   #url: "https://bitbucket.org/psrsoft/{{ name }}/downloads/{{ name }}-{{ version }}.tar.gz"
-  url: https://bitbucket.org/psrsoft/{{ name }}/get/{{ version }}.tar.gz
-  sha256: ab1212d165ac5811d0f6869b0b85bc742164ee4edf2c431b21dafc8ed9c49a60
-  # example of how to get untagged git hash version
-  ## This is v2020.07.1 but not tagged
-  #url: https://bitbucket.org/psrsoft/{{ name }}/get/b054862c0788.tar.gz
-  patches:
-    - configure.patch
-    - header.patch
+  # for versions that don't exist in "Download" but are tagged use:
+  #url: https://bitbucket.org/psrsoft/{{ name }}/get/{{ version }}.tar.gz
+  # for versions based on an untagged git hash (required for v2021.07.1) use:
+  url: https://bitbucket.org/psrsoft/{{ name }}/get/e6fb8ca69895.tar.gz
+  sha256: 839c1ccfc4fe73f63c6cf176244631a80c9e460bcf69550d2727c4a5f642e354
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win]
 
 requirements:
