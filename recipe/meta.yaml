@@ -33,20 +33,16 @@ requirements:
     - gsl
     - fftw
     - libblas
-    - libcblas
     - liblapack
-    - mkl
-    - llvm-openmp
+    - llvm-openmp  # [osx]
   run:
     - cfitsio
     - pgplot
     - gsl
     - fftw
     - libblas
-    - libcblas
     - liblapack
-    - mkl
-    - llvm-openmp
+    - llvm-openmp  # [osx]
 
 test:
   source_files:
