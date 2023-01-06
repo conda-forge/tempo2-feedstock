@@ -19,7 +19,7 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == 1 ]]; then
     export CC=$CC_FOR_BUILD
     export host_alias=$build_alias
     
-    cp -r ../bootstrap ../configure.ac ../*.c ../*.C ../*.h ../*.sh ../*.txt ../T2runtime
+    cp -r ../bootstrap ../configure.ac ../*.c ../*.C ../*.h ../*.sh ../*.txt ../T2runtime .
     
     ./bootstrap
     ./configure --prefix=$BUILD_PREFIX --disable-local --disable-psrhome PGPLOT_DIR=$PREFIX/include/pgplot
