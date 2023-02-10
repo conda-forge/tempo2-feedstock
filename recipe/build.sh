@@ -1,13 +1,40 @@
 #! /bin/bash
+# Get an updated config.sub and config.guess
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./tests/gtest-1.7.0/build-aux
 
 #./bootstrap
 #export CXXFLAGS=$(echo "$CXXFLAGS" | sed 's/-O2//' | perl -pe 's/-std=.+ /-std=c++98 /')
 #echo "CXXFLAGS $CXXFLAGS"
 
 export TEMPO2=$PREFIX/share/tempo2
+
+if [[ "$CONDA_BUILD_CROSS_COMPILATION" == 1 ]]; then
+  (
+    # Make native build of tempo2
+    mkdir -p native-build
+    pushd native-build
+
+    unset MACOSX_DEPLOYMENT_TARGET
+
+    export CC=$CC_FOR_BUILD
+    export host_alias=$build_alias
+
+    cp -r ../bootstrap ../configure.ac ../*.c ../*.C ../*.h ../*.sh ../*.txt ../T2runtime ../plugin ../sofa ../autoconf.boot ../python .
+
+    ./bootstrap
+    ./configure --prefix=$BUILD_PREFIX --disable-local --disable-psrhome PGPLOT_DIR=$PREFIX/include/pgplot
+    make -j${CPU_COUNT}
+    make -j${CPU_COUNT} plugins
+
+    popd
+  )
+  export PATH=`pwd`/native-build:$PATH
+fi
+
 ./bootstrap
 ./configure --prefix=$PREFIX --disable-local --disable-psrhome PGPLOT_DIR=$PREFIX/include/pgplot
 make -j${CPU_COUNT}
+
 make install
 make -j${CPU_COUNT} plugins
 make plugins-install
