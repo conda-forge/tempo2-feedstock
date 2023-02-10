@@ -1,5 +1,5 @@
 {% set name = "tempo2" %}
-{% set version = "2022.05.1" %}
+{% set version = "2023.01.1" %}
 
 package:
   name: "{{ name|lower }}"
@@ -9,13 +9,13 @@ source:
   # for "Download" versions use:
   #url: "https://bitbucket.org/psrsoft/{{ name }}/downloads/{{ name }}-{{ version }}.tar.gz"
   # for versions that don't exist in "Download" but are tagged use:
-  url: https://bitbucket.org/psrsoft/{{ name }}/get/2020.05.1.tar.gz
+  url: https://bitbucket.org/psrsoft/{{ name }}/get/{{ version }}.tar.gz
   # for versions based on an untagged git hash (required for v2021.07.1) use:
   #url: https://bitbucket.org/psrsoft/{{ name }}/get/e6fb8ca69895.tar.gz
-  sha256: 34f83654ac5a0e6d0c72e779aa4bda9cd1bd3bd5220a3c6199746cdaa72261f5
+  sha256: 48d2027dae7cb12666d38e4af1a6a549cc78fc7cdd22c02cee9e6bcc40e63302
 
 build:
-  number: 2
+  number: 0
   skip: true  # [win]
 
 requirements:
