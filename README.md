@@ -1,11 +1,11 @@
-About tempo2
-============
+About tempo2-feedstock
+======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/tempo2-feedstock/blob/main/LICENSE.txt)
 
 Home: https://bitbucket.org/psrsoft/tempo2/
 
 Package license: GPL-3.0-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/tempo2-feedstock/blob/main/LICENSE.txt)
 
 Summary: Tempo2 is a high precision pulsar timing tool. Tempo2 is not tempo3 either.
 
