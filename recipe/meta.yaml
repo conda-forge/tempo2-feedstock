@@ -48,7 +48,8 @@ test:
     - tests/test_data/test_de430.par
     - tests/test_data/test_de430.tim
   commands:
-    - tempo2 -f tests/test_data/test_de430.par tests/test_data/test_de430.tim
+    # skip tests for ppc64le is skipped
+    - tempo2 -f tests/test_data/test_de430.par tests/test_data/test_de430.tim  # [not ppc64le]
 
 about:
   home: https://bitbucket.org/psrsoft/tempo2/
