@@ -14,13 +14,14 @@ source:
   url: https://bitbucket.org/psrsoft/{{ name }}/get/fca5812c2b139ee8e1d6ec13986c661c621446c9.tar.gz
   sha256: 6e586554eca77f241be54537b2e0991b089bb87ab9657962e656b18bbe331f33
 build:
-  number: 3
+  number: 4
   skip: true  # [win]
 
 requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('fortran') }}
     - autoconf
     - automake
