@@ -1,0 +1,13 @@
+diff --git a/autoconf.boot/package.m4 b/autoconf.boot/package.m4
+index d518dfa..d897085 100644
+--- a/autoconf.boot/package.m4
++++ b/autoconf.boot/package.m4
+@@ -145,7 +145,7 @@ AC_DEFUN([SWIN_PACKAGE_TRY_LINK],
+   cf_lib_path_list="$with_[$1]_lib_dir $swin_search_path [$5] ."
+ 
+   ac_save_CFLAGS="$CFLAGS"
+-  ac_save_CXXFLAGS="$CFLAGS"
++  ac_save_CXXFLAGS="$CXXFLAGS"
+   CFLAGS="$[$1]_CFLAGS $ac_save_CFLAGS"
+   CXXFLAGS="$[$1]_CFLAGS $ac_save_CXXFLAGS"
+
