@@ -1,0 +1,12 @@
+diff --git a/plugin/interpolate_plug.C b/plugin/interpolate_plug.C
+index 434d476..0795eb9 100644
+--- a/plugin/interpolate_plug.C
++++ b/plugin/interpolate_plug.C
+@@ -36,7 +36,6 @@
+ #include "fftw3.h"
+ #include "choleskyRoutines.C"
+
+-using namespace std;
+
+ typedef struct sample {
+   double x;
