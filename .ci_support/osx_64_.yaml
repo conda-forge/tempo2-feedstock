@@ -25,7 +25,7 @@ fftw:
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '12'
+- '13'
 gsl:
 - '2.7'
 libblas:
