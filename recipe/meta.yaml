@@ -26,7 +26,6 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('fortran') }}
-    - libcxx-devel  # [osx]
     - autoconf
     - automake
     - libtool
