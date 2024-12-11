@@ -15,10 +15,11 @@ source:
   sha256: 4b2f4c75c137c21b9438539ef392e77edd39619024ddc4a1ddc59f6d03322a08
   patches:
     - 0001-package-m4.patch
+    - 0002-interpolate-std.patch
 
 build:
-  number: 0
-  skip: true  # [win or osx]
+  number: 1
+  skip: true  # [win]
 
 requirements:
   build:
