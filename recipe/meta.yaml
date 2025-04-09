@@ -18,7 +18,7 @@ source:
     - 0002-interpolate-std.patch
 
 build:
-  number: 3
+  number: 4
   skip: true  # [win]
 
 requirements:
