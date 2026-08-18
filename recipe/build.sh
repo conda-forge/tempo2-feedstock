@@ -5,6 +5,10 @@
 #echo "CXXFLAGS $CXXFLAGS"
 
 export TEMPO2=$PREFIX/share/tempo2
+
+# Get an updated config.sub and config.guess
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./tests/gtest-1.7.0/build-aux
+
 ./bootstrap
 ./configure --prefix=$PREFIX --disable-local --disable-psrhome PGPLOT_DIR=$PREFIX/include/pgplot
 make -j${CPU_COUNT}
