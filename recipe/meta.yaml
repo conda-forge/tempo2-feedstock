@@ -29,6 +29,7 @@ requirements:
     - {{ compiler('fortran') }}
     - autoconf
     - automake
+    - gnuconfig
     - libtool
     - make      # [unix]
   host:
