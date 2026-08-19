@@ -52,6 +52,8 @@ requirements:
     - liblapack
     - if: osx
       then: llvm-openmp
+  run_exports:
+    - ${{ pin_subpackage("tempo2", upper_bound="x.x.x") }}
 
 tests:
   - package_contents:
