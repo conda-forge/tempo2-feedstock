@@ -1,17 +1,20 @@
-{% set name = "tempo2" %}
-{% set version = "2026.04.1" %}
+schema_version: 1
+
+context:
+  name: tempo2
+  version: "2026.04.1"
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
   # for "Download" versions use:
   #url: "https://bitbucket.org/psrsoft/{{ name }}/downloads/{{ name }}-{{ version }}.tar.gz"
   # for versions that don't exist in "Download" but are tagged use:
-  url: https://bitbucket.org/psrsoft/{{ name }}/get/{{ version }}.tar.gz
   # for versions based on an untagged git hash (required for v2021.07.1) use:
   #url: https://bitbucket.org/psrsoft/{{ name }}/get/d072c424de34f50d0627c4ca9f8b4ec40a791e07.tar.gz
+  url: https://bitbucket.org/psrsoft/${{ name }}/get/${{ version }}.tar.gz
   sha256: 25b8e164cda4637da1b479a837dfc5528821b5774073ccdb2c080fbcef826bd3
   patches:
     - 0001-package-m4.patch
@@ -19,19 +22,19 @@ source:
 
 build:
   number: 1
-  skip: true  # [win]
+  skip: win
 
 requirements:
   build:
-    - {{ compiler('cxx') }}
-    - {{ compiler('c') }}
-    - {{ stdlib("c") }}
-    - {{ compiler('fortran') }}
+    - ${{ compiler('cxx') }}
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('fortran') }}
     - autoconf
     - automake
     - gnuconfig
     - libtool
-    - make      # [unix]
+    - make
   host:
     - cfitsio
     - pgplot
@@ -39,7 +42,8 @@ requirements:
     - fftw
     - libblas
     - liblapack
-    - llvm-openmp  # [osx]
+    - if: osx
+      then: llvm-openmp
   run:
     - cfitsio
     - pgplot
@@ -47,26 +51,29 @@ requirements:
     - fftw
     - libblas
     - liblapack
-    - llvm-openmp  # [osx]
+    - if: osx
+      then: llvm-openmp
 
-test:
-  source_files:
-    - tests/test_data/test_de430.par
-    - tests/test_data/test_de430.tim
-  commands:
-    # skip tests for ppc64le is skipped
-    - tempo2 -f tests/test_data/test_de430.par tests/test_data/test_de430.tim  # [not ppc64le]
+tests:
+  - files:
+      source:
+        - tests/test_data/test_de430.par
+        - tests/test_data/test_de430.tim
+    script:
+      - if: not ppc64le
+        then: tempo2 -f tests/test_data/test_de430.par tests/test_data/test_de430.tim
 
 about:
-  home: https://bitbucket.org/psrsoft/tempo2/
+  homepage: https://bitbucket.org/psrsoft/tempo2/
+  repository: https://bitbucket.org/psrsoft/tempo2/
+  documentation: https://bitbucket.org/psrsoft/tempo2/src/${{ version }}/documentation/
   license: GPL-3.0-or-later
-  license_family: GPL
   license_file: COPYING
   summary: Tempo2 is a high precision pulsar timing tool. Tempo2 is not tempo3 either.
-  dev_url: https://bitbucket.org/psrsoft/tempo2/
 
 extra:
   recipe-maintainers:
     - demorest
     - sixbynine
     - mattpitkin
+
