@@ -54,13 +54,26 @@ requirements:
       then: llvm-openmp
 
 tests:
-  - files:
-      source:
-        - tests/test_data/test_de430.par
-        - tests/test_data/test_de430.tim
+  - package_contents:
+      bin:
+        - tempo2
+        - getPeriod
+      lib:
+        - tempo2
+        - tempo2pred
+        - t2toolkit
+        - sofa
+      include:
+        - tempo2.h
+        - tempo2pred.h
+        - T2toolkit.h
   - script:
       - if: not ppc64le
         then: tempo2 -f tests/test_data/test_de430.par tests/test_data/test_de430.tim
+    files:
+      source:
+        - tests/test_data/test_de430.par
+        - tests/test_data/test_de430.tim
 
 about:
   homepage: https://bitbucket.org/psrsoft/tempo2
@@ -75,4 +88,3 @@ extra:
     - demorest
     - sixbynine
     - mattpitkin
-
