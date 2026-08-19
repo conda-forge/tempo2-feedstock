@@ -1,11 +1,10 @@
 schema_version: 1
 
 context:
-  name: tempo2
   version: "2026.04.1"
 
 package:
-  name: ${{ name|lower }}
+  name: tempo2
   version: ${{ version }}
 
 source:
@@ -14,7 +13,7 @@ source:
   # for versions that don't exist in "Download" but are tagged use:
   # for versions based on an untagged git hash (required for v2021.07.1) use:
   #url: https://bitbucket.org/psrsoft/{{ name }}/get/d072c424de34f50d0627c4ca9f8b4ec40a791e07.tar.gz
-  url: https://bitbucket.org/psrsoft/${{ name }}/get/${{ version }}.tar.gz
+  url: https://bitbucket.org/psrsoft/tempo2/get/${{ version }}.tar.gz
   sha256: 25b8e164cda4637da1b479a837dfc5528821b5774073ccdb2c080fbcef826bd3
   patches:
     - 0001-package-m4.patch
