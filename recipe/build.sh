@@ -26,7 +26,7 @@ fi
 cp $BUILD_PREFIX/share/gnuconfig/config.* ./tests/gtest-1.7.0/build-aux
 
 ./bootstrap
-./configure --prefix=${PREFIX} --disable-local --disable-psrhome PGPLOT_DIR=$PREFIX/include/pgplot ${configure_args[@]}
+./configure --prefix=${PREFIX} --disable-local --disable-psrhome PGPLOT_DIR=$PREFIX/include/pgplot "${configure_args[@]}"
 make -j${CPU_COUNT}
 make install
 make -j${CPU_COUNT} plugins
