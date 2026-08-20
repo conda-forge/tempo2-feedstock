@@ -8,13 +8,13 @@ cxx_compiler:
     then: gxx
 c_compiler_version:
   - if: osx and arm64
-    then: 15
+    then: '15'
 cxx_compiler_version:
   - if: osx and arm64
-    then: 15
+    then: '15'
 gcc_compiler_version:
   - if: osx and arm64
-    then: 15
+    then: '15'
 gxx_compiler_version:
   - if: osx and arm64
-    then: 15
+    then: '15'
