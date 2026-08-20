@@ -20,15 +20,15 @@ source:
     - 0002-interpolate-std.patch
 
 build:
-  number: 1
+  number: 2
   skip: win
 
 requirements:
   build:
-    - ${{ compiler('cxx') }}
     - ${{ compiler('c') }}
-    - ${{ stdlib("c") }}
+    - ${{ compiler('cxx') }}
     - ${{ compiler('fortran') }}
+    - ${{ stdlib("c") }}
     - autoconf
     - automake
     - gnuconfig
@@ -36,22 +36,16 @@ requirements:
     - make
   host:
     - cfitsio
-    - pgplot
-    - gsl
     - fftw
+    - gsl
     - libblas
     - liblapack
+    - pgplot
     - if: osx
       then: llvm-openmp
   run:
-    - cfitsio
+    # `pgplot` does not provide run_exports
     - pgplot
-    - gsl
-    - fftw
-    - libblas
-    - liblapack
-    - if: osx
-      then: llvm-openmp
   run_exports:
     - ${{ pin_subpackage("tempo2", upper_bound="x.x.x") }}
 
@@ -70,8 +64,13 @@ tests:
         - tempo2pred.h
         - T2toolkit.h
   - script:
-      - if: not ppc64le
-        then: tempo2 -f tests/test_data/test_de430.par tests/test_data/test_de430.tim
+      # Run the precision regression test on every supported architecture
+      # Merely checking the exit status is insufficient because Tempo2 also exits successfully when the calculated residual is inaccurate
+      - OMP_NUM_THREADS=4 tempo2 -f tests/test_data/test_de430.par tests/test_data/test_de430.tim 2>&1 | tee tempo2-test.log
+
+      # Healthy builds produce a post-fit TRES of approximately 0.00125 us, while the affected osx-arm64 build produces approximately 0.32 us
+      # Use 0.01 us as a deliberately loose cross-platform regression limit
+      - awk '$1 == "TRES" { found = 1; ok = ($3 > 0 && $3 < 0.01) } END { exit !(found && ok) }' tempo2-test.log
     files:
       source:
         - tests/test_data/test_de430.par
