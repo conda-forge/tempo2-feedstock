@@ -1,0 +1,8 @@
+# Apple Clang's long double has only 53 mantissa bits on arm64
+# Use GCC and libquadmath so Tempo2 can enable `__float128` arithmetic
+c_compiler:
+  - if: osx and arm64
+    then: gcc
+cxx_compiler:
+  - if: osx and arm64
+    then: gxx
