@@ -8,10 +8,10 @@ cxx_compiler:
     then: gxx
 c_compiler_version:
   - if: osx and arm64
-    then: '16'
+    then: '15'
 cxx_compiler_version:
   - if: osx and arm64
-    then: '16'
+    then: '15'
 
 # Work around conda-forge/ctng-compilers-feedstock#225:
 # gfortran 15 can resolve with gcc_impl 16, causing -lemutls_w link failures.
