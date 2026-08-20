@@ -6,16 +6,21 @@ c_compiler:
 cxx_compiler:
   - if: osx and arm64
     then: gxx
+fortran_compiler:
+  - if: osx and arm64
+    then: gfortran
 c_compiler_version:
   - if: osx and arm64
     then: '15'
 cxx_compiler_version:
   - if: osx and arm64
     then: '15'
-
-# Work around conda-forge/ctng-compilers-feedstock#225:
-# gfortran 15 can resolve with gcc_impl 16, causing -lemutls_w link failures.
-# Remove this pin after the dependency is fixed.
 fortran_compiler_version:
-  - if: osx
+  - if: osx and arm64
+    then: '15'
+
+  # Work around conda-forge/ctng-compilers-feedstock#225:
+  # gfortran 15 can resolve with gcc_impl 16 on osx-64, causing
+  # -lemutls_w link failures. Remove after the dependency is fixed.
+  - if: osx and x86_64
     then: "16"
