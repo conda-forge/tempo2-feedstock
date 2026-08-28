@@ -5,7 +5,7 @@ MACOSX_SDK_VERSION:
 c_compiler:
 - gcc
 c_compiler_version:
-- '15'
+- '16'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -19,13 +19,13 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '15'
+- '16'
 fftw:
 - '3'
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '15'
+- '16'
 gsl:
 - '2.8'
 libblas:
