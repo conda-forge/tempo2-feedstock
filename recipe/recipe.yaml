@@ -20,7 +20,7 @@ source:
     - 0002-interpolate-std.patch
 
 build:
-  number: 3
+  number: 4
   skip: win
 
 requirements:
@@ -63,6 +63,10 @@ tests:
         - tempo2.h
         - tempo2pred.h
         - T2toolkit.h
+  - script:
+      # TEMPO2 is set through etc/conda/env_vars.d/tempo2.json
+      - test "$TEMPO2" = "$PREFIX/share/tempo2"
+      - test -f "$TEMPO2/observatory/observatories.dat"
   - script:
       # Run the precision regression test on every supported architecture
       # Merely checking the exit status is insufficient because Tempo2 also exits successfully when the calculated residual is inaccurate
